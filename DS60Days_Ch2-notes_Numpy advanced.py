@@ -168,28 +168,107 @@ ha1 = np.hsplit(a, [2, 3, 6])
 print('依水平軸切分，依照區段切\n', ha1)
 # In[] NumPy 陣列的合併與分割-分割-vsplit()
 
+import numpy as np
+b = np.arange(30).reshape(5, 6)
+print(b)
+bv = np.vsplit(b, [2,3,5])
+print(bv)
+
+# In[] NumPy 陣列的迭代-一維陣列
+import numpy as np
+a = np.arange(5)
+
+for i in a:
+    print(i)
+
+# In[]  NumPy 陣列的迭代-多維陣列
+"""多維陣列的迭代則以 axis 0 為準"""
+b = np.arange(6).reshape(2,3)
+for row in b:
+    print(row)
+
+#列出多維陣列所有元素的話，可以配合 flat 屬性
+b_flat = np.arange(6).reshape(2,3)
+for row in b_flat.flat:
+    print(row)
+
+# In[] NumPy 陣列的搜尋-取一維陣列中最大、最小的元素值
+import numpy as np
+
+ar = np.random.randint(0,100,10)
+print(ar)
+
+#取一維陣列中最大值
+ar_max = np.amax(ar)
+print('取陣列中最大值(amax): ',ar_max)
+
+#取一維陣列中最小值
+ar_min = np.amin(ar)
+print('取陣列中最小值(amin): ',ar_min)
+
+# In[] NumPy 陣列的搜尋-取多維陣列中最大、最小的元素值
+import numpy as np
+
+ar = np.random.randint(0,100,10).reshape(5,2)
+print(ar)
+
+#取多維陣列中最大元素
+ar_max = np.amax(ar)
+print('取陣列中最大值(amax)語法一: ',ar_max)
+armax2 = ar.max()
+print('取陣列中最大值(amax)語法二: ',armax2)
+
+#取多維陣列中最大元素 - keepdims=True
+ar_max_dim = np.amax(ar, keepdims=True)
+print('keepdims=True ->>', ar_max_dim)  #keepdims=True，結果會保留原陣列的維度來顯示。
+
+#取多維陣列中最大元素 - axis=0, 1，列出各 row,column的元素最大值
+ar_max_ax0 = np.amax(ar, axis=0)
+ar_max_ax1 = np.amax(ar, axis=1)
+print('取陣列中最大值(amax) axis=0: ',ar_max_ax0)
+print('取陣列中最大值(amax) axis=1: ',ar_max_ax1)
 
 
 
-# In[] 
+
+#-------------------
+#取多維陣列中最小元素
+ar_min = np.amin(ar)
+print('取陣列中最小值(amin): ',ar_min)
 
 
+# In[] NumPy 陣列的搜尋-顯示最大值和最小值的索引：argmax()、argmin()
 
+#列出最大值的索引
+np.random.seed(0)
+a = np.random.randint(0,50,size=(4,3))
+print(a)
+print(np.argmax(a))
 
-# In[] 
+# 依照 row, column 列出最大、最小值索引
+a_argmax_ax0 = np.argmax(a, axis=0)
+print('依照 column 列出最大值索引', a_argmax_ax0)
+a_argmax_ax1 = np.argmax(a, axis=1)
+print('依照 row 列出最大值索引', a_argmax_ax1)
+# In[] NumPy 陣列的搜尋-找出符合條件的索引-where
 
+a = np.random.randint(1, 20, size=(3, 4))
+print(a)
+a_where = np.where(a>10)
+print(a_where)
 
+# In[] NumPy 陣列的搜尋-nonzero
 
-# In[] 
+a = np.random.randint(0, 20, size=(3, 4))
+print(a)
+a_nonzero =np.nonzero(a)
+print('a_nonzero', a_nonzero)
 
+# In[] Numpy 陣列的排序-sort()、argsort()
 
+np.random.seed(5)
+a = np.random.randint(0,50,size=(3,4))
+print(a)
 
-# In[] 
-
-
-
-# In[] 
-
-# In[] 
-
-# In[] 
+print('sort:\n', np.sort(a))
+print('argsort:\n', np.argsort(a))
