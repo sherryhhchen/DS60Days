@@ -140,25 +140,76 @@ print('np.power(ar_a,ar_b) = ',np.power(ar_a,ar_b))
 
 # In[] Numpy陣列的運算 - np.sqrt()：平方根
 
+a = np.array([9,4,144,36,8])
+print(np.sqrt(a))
 
 
 
 # In[] Numpy陣列的運算 - np.exp()：歐拉數 (Euler's number) 及指數函式
 
+e = np.e #歐拉常數
+print(e)
+
+np.exp(3)
+print('np.exp(1) =', np.exp(3))
+print('np.exp(np.arange(5)) =', np.exp(np.arange(5)))
+
+# In[] Numpy陣列的運算 - 對數
+
+import numpy as np
+#以np.log10()為例
+x = np.log10(np.array([1, 10, 100, 1000, 10000]))
+print(x)
 
 
-# In[]
+#若是log(負數)，則會產生nan常數
+# import warnings 
+# warnings.filterwarnings('ignore')
+
+y = np.log([-1,2,1])
+print(y)
+
+# In[] Numpy陣列的運算 - 取近似值
+"""
+IEEE 754 的"四捨五取最近偶數六入"
+"""
+a = np.array([1.65, 1.55, 1.46, 1.45, 1.44, -3.57, 2.0])
+print('a',a)
+a_round = np.round(a, decimals=1)
+print('a_round', a_round)
+
+# Round至最近的整數
+print('np.rint(a)',np.rint(a))
+
+# 無條件捨去小數點
+print('np.trunc(a)',np.trunc(a))
+
+# 向下取整數
+print('np.floor(a)', np.floor(a))
+
+# 向上取整數
+print('np.ceil(a)',np.ceil(a))
+      
+# 向0的方向取整數
+print('np.fix(a)', np.fix(a))
+
+
+# In[] Numpy陣列的運算 - 取絕對值：np.abs(), np.absolute(), np.fabs()
+
+a = np.array([1.65,  1.55, -3.57,  2. ])
+print('np.abs', np.abs(a))
+print('np.absolute', np.absolute(a))
+print('np.fabs', np.fabs(a))
+
+#傳入複數至 fabs() 的話則會產生錯誤。
+print('np.abs', np.abs(1+2j))
+print('np.absolute', np.absolute(1+2j))
+print('np.fabs', np.fabs(1+2j))
 
 
 
-# In[]
 
 
 
-# In[]
-
-
-
-# In[]
 
 
