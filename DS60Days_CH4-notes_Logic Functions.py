@@ -128,10 +128,7 @@ print('陣列：\n', rc,
       '\n判斷是否有複數.iscomplexobj()：\n', rc_iscomplexobj)
 
 
-# In[]  
-
-
-
+# In[]  Numpy 陣列比較
 
 
 
