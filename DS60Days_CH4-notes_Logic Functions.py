@@ -12,12 +12,12 @@ Part.2-1-04 NumPy 陣列邏輯函式 (Logic Functions)
 @author: Sherry.HH.Chen
 """
 # In[] Numpy 矩陣運算：element-wise operation
-
+import numpy as np
 A = np.array([[1,2],[3,4]],dtype='float64')
 B = np.array([[5,0],[0,0]],dtype='float64')
 A+B      # element-wise plus
-array([[ 6.,  2.],
-       [ 3.,  4.]])
+C = np.array([[ 6.,  2.],
+           [ 3.,  4.]])
 
 # In[] Numpy 矩陣運算：matrix operation
 import numpy as np
@@ -128,46 +128,127 @@ print('陣列：\n', rc,
       '\n判斷是否有複數.iscomplexobj()：\n', rc_iscomplexobj)
 
 
-# In[]  Numpy 陣列比較
+# In[]  Numpy 廣播
+import numpy as np
+ 
+a = np.array([1,2,3])
+b = 2
+c = np.array([1,1,1])
+c1 = 1
+print(np.array_equal(c, c1), np.array_equiv(c, c1))
+
+
+#元素相同形狀不同，但經廣播後，形狀相同
+np.array_equal(np.array([1]), np.array([1,1,1,1]))
+np.array_equiv(np.array([1]), np.array([1,1,1,1]))
 
 
 
-# In[]  
+# In[]  Numpy 陣列型別比較
+
+# 形狀與元素值均相同
+print('比較兩陣列形狀與元素是否相同：',
+      np.equal(np.array([1, 2, 3]), np.array([1, 2, 3])))
+
+#符合廣播規則的相等
+print('符合廣播規則的相等`:',
+      np.equal(np.array([1, 1, 1]), np.ones(1)))
+
+# 不等於的比較，符合廣播規則
+print('符合廣播規則的不等於比較：',
+      np.not_equal([1, 2], [[1, 3],[1, 4]]))
+
+
+# In[]  Numpy 陣列邏輯操作
+import numpy as np
+
+x = np.array([1,2,3,4])
+y = np.array([1,2,26,5])
+a = np.array([True, True, False, False])
+b = np.array([True, False, True, False])
+
+#AND：兩個都是True, 才是True
+print('判斷 np.logical_and()：\n',
+    np.logical_and(a, b),
+    'a & b：')
+print(a & b)
+
+#OR：一個是True，就是True
+print('判斷 np.logical_or()：\n',
+    np.logical_or(a, b))
+
+#NOT
+print('判斷 np.logical_not()：\n',
+    np.logical_not(b))
+
+#XOR
+print('判斷 np.logical_xor()：\n',
+    np.logical_xor(a, b))
+
+print('判斷 np.logical_xor()：\n',
+    np.logical_xor(np.array([True, True, False, False]), np.array([True, False, True, False])))
+
+
+
+# In[]  Numpy 陣列邏輯操作-判斷 XOR
+"""
+判斷兩個是否不一樣
+不一樣 -> True
+一樣 -> False
+"""
+print('np.logical_xor(True, True)：',
+      np.logical_xor(True, True))
+
+print('np.logical_xor(True, False)：',
+      np.logical_xor(True, False))
+
+print('np.logical_xor(False, True)：',
+      np.logical_xor(False, True))
+
+print('np.logical_xor(False, False)：',
+      np.logical_xor(False, False))
+
+print('np.logical_xor([True, True],[True, True])：',
+      np.logical_xor([True, True],[True, True]))
+
+print('np.logical_xor([False, False],[False, False])：',
+      np.logical_xor([False, False],[False, False]))
+
+print('np.logical_xor([True, False],[False, False])：',
+      np.logical_xor([True, False],[False, False]))
+
+print('np.logical_xor([True, True, False, False],[True, False, True, False])：',
+      np.logical_xor([True, True, False, False],[True, False, True, False]))
+
+
+# In[] Numpy 陣列邏輯操作-logical AND (廣播) 
+
+"""
+透過廣播產生符合條件的 2 個 True/False 陣列，並且進行 logical AND 操作。
+"""
+
+a = np.arange(5)
+print(np.logical_and(a > 1, a < 4))
+
+
+# In[]  np.all()：與
+
+arr1 = np.array([0,1,2,3])
+arr2 = np.array([True,True,True])
+
+print(arr1.any())
+#result:True
+print(arr1.all())
+#result:False
+print(arr2.any())
+#result:True
+print(arr2.all())
+#result:True
 
 
 
 
-
-
-# In[]  
-
-
-
-
-
-
-# In[]  
-
-
-
-
-
-
-# In[]  
-
-
-
-
-
-
-# In[]  
-
-
-
-
-
-
-# In[]  
+# In[]  np.any():或
 
 
 
